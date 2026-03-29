@@ -1,4 +1,11 @@
 <Solution>
-  <Project Path="ConsoleApp/ConsoleApp.csproj" />
-  <Project Path="WinFormsApp/WinFormsApp.csproj" />
+  <Folder Name="/HW_29_03_2026_to_05_04_2026/">
+    <Project Path="CipherLibrary/CipherLibrary.csproj" />
+    <Project Path="ConsoleCipherApp/ConsoleCipherApp.csproj" />
+    <Project Path="WinFormsCipherApp/WinFormsCipherApp.csproj" />
+  </Folder>
+  <Folder Name="/practice_29_03_2026/">
+    <Project Path="ConsoleApp/ConsoleApp.csproj" />
+    <Project Path="WinFormsApp/WinFormsApp.csproj" />
+  </Folder>
 </Solution>
