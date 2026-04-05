@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CipherLibrary\CipherLibrary.csproj" />
+    <ProjectReference Include="..\LibraryTask\LibraryTask.csproj" />
   </ItemGroup>
 
 </Project>

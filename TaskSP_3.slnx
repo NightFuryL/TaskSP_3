@@ -1,11 +1,5 @@
 <Solution>
-  <Folder Name="/HW_29_03_2026_to_05_04_2026/">
-    <Project Path="CipherLibrary/CipherLibrary.csproj" />
-    <Project Path="ConsoleCipherApp/ConsoleCipherApp.csproj" />
-    <Project Path="WinFormsCipherApp/WinFormsCipherApp.csproj" />
-  </Folder>
-  <Folder Name="/practice_29_03_2026/">
-    <Project Path="ConsoleApp/ConsoleApp.csproj" />
-    <Project Path="WinFormsApp/WinFormsApp.csproj" />
-  </Folder>
+  <Project Path="ConsoleTask/ConsoleTask.csproj" Id="6589267e-a22e-4702-b945-ba27009b9807" />
+  <Project Path="LibraryTask/LibraryTask.csproj" Id="4d283b1e-4ddb-4a2d-bc43-55203971552d" />
+  <Project Path="WinFormsTask/WinFormsTask.csproj" Id="167a9462-28b1-442d-a220-dce47ea0bdb1" />
 </Solution>

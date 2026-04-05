@@ -1,4 +1,4 @@
-namespace WinFormsCipherApp
+namespace WinFormsTask
 {
     internal static class Program
     {
