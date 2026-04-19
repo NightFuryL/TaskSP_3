@@ -1,5 +1,4 @@
 <Solution>
-  <Project Path="ConsoleTask/ConsoleTask.csproj" Id="6589267e-a22e-4702-b945-ba27009b9807" />
-  <Project Path="OracleLibrary/OracleLibrary.csproj" Id="ab440d3e-2cb2-46b7-a281-5f27fbf37bfd" />
-  <Project Path="OracleWF/OracleWF.csproj" Id="aa5bca40-db01-4045-8592-e2776e3a48b7" />
+  <Project Path="LibraryTask/LibraryTask.csproj" Id="80ab03a8-7aed-439a-8da6-0e6ad56b4bb7" />
+  <Project Path="WinFormsTask/WinFormsTask.csproj" Id="c45c0406-4f29-4470-8444-2fff58997e23" />
 </Solution>
