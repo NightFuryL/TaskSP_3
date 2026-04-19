@@ -1,4 +1,4 @@
-namespace WinFormsTask
+namespace OracleWF
 {
     internal static class Program
     {

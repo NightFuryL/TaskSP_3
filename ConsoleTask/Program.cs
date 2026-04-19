@@ -1,59 +1,71 @@
-﻿using LibraryTask;
-using System.Diagnostics;
-
+﻿namespace ConsoleTask;
 class Program
 {
-    private static int totalFiles = 0;
-    private static int processedFiles = 0;
-
-    static async Task Main(string[] args)
+    unsafe static void SquareParam(int* p)
     {
-        Console.WriteLine("Write path to the folder:");
-        string input = Console.ReadLine();
-        string path = string.IsNullOrWhiteSpace(input) ? @"..\..\..\..\TestFolder" : input;
-
-        var files = Directory.GetFiles(path, "*.txt", SearchOption.AllDirectories);
-
-        totalFiles = files.Length;
-
-        Stopwatch sw = new Stopwatch();
-        sw.Start();
-
-        foreach (var file in files)
-        {
-            //Також як в проєкті з WinForms
-            ThreadPool.QueueUserWorkItem(async _ =>
-            {
-                await ProcessFile(file);
-            });
-        }
-
-        while (processedFiles < totalFiles)
-        {
-            await Task.Delay(100);
-        }
-
-        sw.Stop();
-
-        Console.WriteLine($"Files: {totalFiles}");
-        Console.WriteLine($"Time: {sw.ElapsedMilliseconds} ms");
+        Console.WriteLine("Адреса: 0x{0:X}", (long)p);
+        *p *= *p;
     }
-
-    static async Task ProcessFile(string file)
+    unsafe static void Main(string[] args)
     {
-        Console.WriteLine($"Start: {file}");
+        int num = 10;
 
-        string text = File.ReadAllText(file);
+        SquareParam(&num);
 
-        FileEncryptor enc = new FileEncryptor();
-        string result = enc.Encrypt(text);
+        Console.WriteLine(num);
+        UString str1 = new UString("Hello World!");
+        Console.WriteLine(str1);
+        Console.WriteLine(str1[5]);
+        str1[0] = 'u';
+        Console.WriteLine(str1);
+        str1.Dispose();
+        char[] chars = { 'a', 'b', 'c', 'e', 'f', 'g', 'h' };
+        Console.WriteLine(chars);
+        Console.WriteLine(FindFirstIndex(chars, 'f'));
+    }
+    public static unsafe void StackAllocUnsafe()
+    {
+        int* ptr = stackalloc int[100];
+        for (int i = 0; i < 100; i++)
+        {
+            *(ptr + i) = i;
+        }
+    }
+    public static void StackAllocSafe()
+    {
+        Span<int> buffer = stackalloc int[100];
+        for(int i = 0;i < 100; i++)
+        {
+            buffer[i] = i;
+        }
+    }
+    public static int FindFirstIndex(char[] data, char target)
+    {
+        // 1. Звичайна safe-частина: валідація
+        if (data == null || data.Length == 0) return -1;
 
-        string newFile = file + ".enc.txt";
+        // 2. Unsafe-блок
+        unsafe
+        {
+            fixed (char* pStart = data)
+            {
+                char* ptr = pStart;
+                char* pEnd = pStart + data.Length;
 
-        await File.WriteAllTextAsync(newFile, result);
+                while (ptr < pEnd)
+                {                    
+                    if (*ptr == target)
+                    {
+                        // Обчислюємо індекс через різницю адрес
+                        // Садреса поточного елемента - адреса початку)
+                        return (int)(ptr - pStart);
+                    }
+                    ptr++;
+                }
+            }
 
-        Console.WriteLine($"Done: {file}");
-
-        processedFiles++;
+        }
+        // 3. Знову safe-частина
+        return -1;
     }
 }

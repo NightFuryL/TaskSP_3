@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LibraryTask\LibraryTask.csproj" />
+    <ProjectReference Include="..\OracleLibrary\OracleLibrary.csproj" />
   </ItemGroup>
 
 </Project>
